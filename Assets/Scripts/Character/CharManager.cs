@@ -7,7 +7,7 @@ public class CharManager : MonoBehaviour
     public CharInfo[] charInfo;
     public string charPath = "CharacterList";
 
-    void Start()
+    void Awake()
     {
         charInfo = Resources.LoadAll<CharInfo>(charPath);
     }

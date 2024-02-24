@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: def79c2faacf3dc439955fa84d73631d, type: 3}
-  m_Name: Char1
+  m_Name: Char2
   m_EditorClassIdentifier: 
-  charName: Mitsuda Shourai
-  LVL: 6
-  HP: 48
-  maxHP: 56
-  MP: 40
-  maxMP: 40
-  ATK: 25
-  DEF: 12
-  SPD: 16
+  charName: Mitsuda Meisa
+  LVL: 10
+  HP: 70
+  maxHP: 99
+  MP: 55
+  maxMP: 60
+  ATK: 55
+  DEF: 30
+  SPD: 28
