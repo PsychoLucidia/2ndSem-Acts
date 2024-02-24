@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Character
 {
-    string name;
-    int HP;
-    int MP;
+    public string charName;
+    public int HP;
+    public int MP;
 
-    public Character(string name, int HP, int MP)
+    public Character(string charName, int HP, int MP)
     {
-        this.name = name;
+        this.charName = charName;
         this.HP = HP;
 
     }
