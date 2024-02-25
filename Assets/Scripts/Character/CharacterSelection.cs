@@ -12,7 +12,7 @@ public class CharacterSelection : MonoBehaviour
 
     void Start()
     {
-        foreach (CharInfo charI in characterManager.charInfo)
+        foreach (CharInfo charI in characterManager.charInfo) //Instantiates buttons containing the data from CharInfo
         {
             GameObject btnInstantiate = Instantiate(objPrefab, parent);
             CharBtn charBtn = btnInstantiate.GetComponent<CharBtn>();

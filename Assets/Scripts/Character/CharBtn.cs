@@ -10,7 +10,7 @@ public class CharBtn : MonoBehaviour
     public TextMeshProUGUI btnLvl;
     public Image btnIcon;
 
-    public void CharSetData(CharInfo charData)
+    public void CharSetData(CharInfo charData) //Set the data of the character buttons
     {
         btnCharName.text = charData.charName;
         btnLvl.text = charData.LVL.ToString();
