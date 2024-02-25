@@ -30,7 +30,7 @@ public class CharacterInfoTween : MonoBehaviour
         attachedObj.localPosition = new Vector2(50, 0);
         attachObjCG.alpha = 0;
         LeanTween.moveLocalX(attachedObj.gameObject, 0, 0.3f).setEaseOutCirc().setIgnoreTimeScale(true);
-        LeanTween.alphaCanvas(attachObjCG, 1, 0.3f).setEaseOutCirc().setIgnoreTimeScale(true);
+        LeanTween.alphaCanvas(attachObjCG, 1, 0.3f).setIgnoreTimeScale(true);
     }
 
     public void MenuClose()
