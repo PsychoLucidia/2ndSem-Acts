@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: def79c2faacf3dc439955fa84d73631d, type: 3}
-  m_Name: Char4
+  m_Name: Char5
   m_EditorClassIdentifier: 
-  charName: Layla Vallturknis
-  LVL: 12
-  HP: 89
-  maxHP: 102
-  MP: 60
-  maxMP: 85
-  ATK: 43
-  DEF: 62
-  SPD: 20
+  charName: Hanamura Fumiko
+  LVL: 10
+  HP: 4
+  maxHP: 84
+  MP: 25
+  maxMP: 57
+  ATK: 56
+  DEF: 17
+  SPD: 30
   characterArt: {fileID: 21300000, guid: 3c1253d55f1ccd84383276366847fe5c, type: 3}
   charIcon: {fileID: 21300000, guid: e1b0ce29f598cfb409bef93bdb18b5c8, type: 3}

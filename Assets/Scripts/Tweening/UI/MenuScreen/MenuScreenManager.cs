@@ -13,6 +13,7 @@ public class MenuScreenManager : MonoBehaviour
     public LineTween lineTween;
     public CharacterIconsTween characterIconsTween;
     public CharacterInfoTween characterInfoTween;
+    public CharacterArtTween characterArtTween;
 
     [Header("Pause Main Objects")]
     public BGImage bGImage;
@@ -41,6 +42,7 @@ public class MenuScreenManager : MonoBehaviour
         bGImage.MenuClose();
         topButtonsTween.MenuClose();
         actionButtonsTween.MenuClose();
+        characterArtTween.MenuClose();
 
         inGameMenuBtn.interactable = true;
         yield return new WaitForSecondsRealtime(0.3f);

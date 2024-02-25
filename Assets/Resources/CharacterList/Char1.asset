@@ -21,3 +21,5 @@ MonoBehaviour:
   ATK: 25
   DEF: 12
   SPD: 16
+  characterArt: {fileID: 21300000, guid: 3c1253d55f1ccd84383276366847fe5c, type: 3}
+  charIcon: {fileID: 21300000, guid: e1b0ce29f598cfb409bef93bdb18b5c8, type: 3}

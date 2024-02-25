@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class CharStatView : MonoBehaviour
 {
-    public CharacterInfoTween characterInfoTween;    
+    public CharacterInfoTween characterInfoTween;
+    public CharacterArtTween characterArtTween;
     public CharManager charManager;
 
     public TextMeshProUGUI textName;
@@ -15,6 +17,7 @@ public class CharStatView : MonoBehaviour
     public TextMeshProUGUI textATK;
     public TextMeshProUGUI textDEF;
     public TextMeshProUGUI textSPD;
+    public Image charImage;
 
     private bool IsStarted = false;
 
@@ -22,6 +25,7 @@ public class CharStatView : MonoBehaviour
     {
         InitCharStatData();
         IsStarted = true;
+        charImage.preserveAspect = true;
     }
 
     void OnEnable()
@@ -35,6 +39,7 @@ public class CharStatView : MonoBehaviour
     public void SetStatData(CharInfo charInfo)
     {
         characterInfoTween.ChangeInfoTween();
+        characterArtTween.ChangeArtTween();
         textName.text = charInfo.charName;
         textHP.text = charInfo.HP.ToString() + " / " + charInfo.maxHP.ToString();
         textMP.text = charInfo.MP.ToString() + " / " + charInfo.maxMP.ToString();
@@ -42,6 +47,7 @@ public class CharStatView : MonoBehaviour
         textATK.text = charInfo.ATK.ToString();
         textDEF.text = charInfo.DEF.ToString();
         textSPD.text = charInfo.SPD.ToString();
+        charImage.sprite = charInfo.characterArt;
     }
 
     public void InitCharStatData() //Display the first data in the Character Manager array
@@ -54,6 +60,8 @@ public class CharStatView : MonoBehaviour
         textATK.text = initDataDisplay.ATK.ToString();
         textDEF.text = initDataDisplay.DEF.ToString();
         textSPD.text = initDataDisplay.SPD.ToString();
+        charImage.sprite = initDataDisplay.characterArt;
+
     }
 
 }

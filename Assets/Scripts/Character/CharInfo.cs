@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 
 [System.Serializable]
@@ -15,4 +16,7 @@ public class CharInfo : ScriptableObject
     public int ATK;
     public int DEF;
     public int SPD;
+
+    public Sprite characterArt;
+    public Sprite charIcon;
 }
