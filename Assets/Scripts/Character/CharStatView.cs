@@ -28,7 +28,7 @@ public class CharStatView : MonoBehaviour
     {
         if (IsStarted)
         {
-            ReinitCharStatData();
+            InitCharStatData();
         }
     }
 
@@ -56,15 +56,4 @@ public class CharStatView : MonoBehaviour
         textSPD.text = initDataDisplay.SPD.ToString();
     }
 
-    private void ReinitCharStatData()
-    {
-        CharInfo initDataDisplay = charManager.charInfo[0]; //Get the data of the first array
-        textName.text = initDataDisplay.charName;
-        textHP.text = initDataDisplay.HP.ToString() + " / " + initDataDisplay.maxHP.ToString();
-        textMP.text = initDataDisplay.MP.ToString() + " / " + initDataDisplay.maxMP.ToString();
-        textLVL.text = initDataDisplay.LVL.ToString();
-        textATK.text = initDataDisplay.ATK.ToString();
-        textDEF.text = initDataDisplay.DEF.ToString();
-        textSPD.text = initDataDisplay.SPD.ToString();
-    }
 }
