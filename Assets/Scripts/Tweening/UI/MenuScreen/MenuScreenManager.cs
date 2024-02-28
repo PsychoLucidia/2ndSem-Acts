@@ -36,6 +36,7 @@ public class MenuScreenManager : MonoBehaviour
 
     IEnumerator CloseMenuIEnum()
     {
+        //Call the functions every function in its classes
         lineTween.LineClose();
         characterIconsTween.MenuClose();
         characterInfoTween.MenuClose();

@@ -17,7 +17,7 @@ public class BGImage : MonoBehaviour
         LeanTween.cancel(imageCG.gameObject);
     }
 
-    public void MenuClose()
+    public void MenuClose() //Activated when the back button in the pause screen is pressed only when the character screen is active
     {
         LeanTween.cancel(imageCG.gameObject);
         imageCG.alpha = imageCG.alpha;
