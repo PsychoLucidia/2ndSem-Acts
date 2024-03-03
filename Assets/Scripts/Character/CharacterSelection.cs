@@ -10,9 +10,10 @@ public class CharacterSelection : MonoBehaviour
     public GameObject objPrefab;
     public CharStatView charStatView;
 
+    // Start function that instantiates buttons containing data from CharInfo
     void Start()
     {
-        foreach (CharInfo charI in characterManager.charInfo) //Instantiates buttons containing the data from CharInfo
+        foreach (CharInfo charI in characterManager.charInfo)
         {
             GameObject btnInstantiate = Instantiate(objPrefab, parent);
             CharBtn charBtn = btnInstantiate.GetComponent<CharBtn>();

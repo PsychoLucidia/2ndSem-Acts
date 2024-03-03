@@ -6,12 +6,14 @@ public class ActionButtonsTween : MonoBehaviour
 {
     public CanvasGroup actBtnCG;
 
+    // This function is called when the object becomes enabled and active.
     void OnEnable()
     {
         actBtnCG.alpha = 0;
         LeanTween.alphaCanvas(actBtnCG, 1, 0.5f).setEaseOutCirc().setIgnoreTimeScale(true);
     }
 
+    // Function called when the behaviour becomes disabled or inactive.
     void OnDisable()
     {
         LeanTween.cancel(actBtnCG.gameObject);

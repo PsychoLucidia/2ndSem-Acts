@@ -18,14 +18,15 @@ public class CharacterArtTween : MonoBehaviour //This is the class that handles 
         LeanTween.alphaCanvas(charArtCG, 1, 1f).setEaseOutCubic().setIgnoreTimeScale(true);
     }
 
+    // Stops the tween of the gameobject
     void OnDisable()
     {
-        //Stops the tween of the gameobject
         LeanTween.cancel(charArtTrans.gameObject);
         LeanTween.cancel(charArtCG.gameObject);
     }
 
-    public void ChangeArtTween() //A function called by CharStatView.cs to tween the object upon clicking the character buttons
+    //A function called by CharStatView.cs to tween the object upon clicking the character buttons
+    public void ChangeArtTween() 
     {
         LeanTween.cancel(charArtTrans.gameObject);
         LeanTween.cancel(charArtCG.gameObject);
@@ -35,7 +36,8 @@ public class CharacterArtTween : MonoBehaviour //This is the class that handles 
         LeanTween.alphaCanvas(charArtCG, 1, 1f).setEaseOutCubic().setIgnoreTimeScale(true);
     }
 
-    public void MenuClose() //Activated when the back button in the pause screen is pressed only when the character screen is active
+    //Activated when the back button in the pause screen is pressed only when the character screen is active
+    public void MenuClose()
     {
         LeanTween.cancel(charArtCG.gameObject);
         charArtCG.alpha = charArtCG.alpha;
