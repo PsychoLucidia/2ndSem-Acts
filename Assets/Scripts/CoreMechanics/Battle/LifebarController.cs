@@ -183,11 +183,11 @@ public class LifebarController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
-            currentMP -= 10f;
+            currentMP += 10f;
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
-            currentMP += 10f;
+            currentMP -= 10f;
         }
     }
 }
