@@ -447,12 +447,12 @@ GameObject:
   - component: {fileID: 151710005}
   - component: {fileID: 151710004}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: HPText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &151710003
 RectTransform:
   m_ObjectHideFlags: 0
@@ -527,7 +527,7 @@ MonoBehaviour:
   m_fontSizeMin: 1
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 16
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1045,12 +1045,12 @@ GameObject:
   - component: {fileID: 1072587362}
   - component: {fileID: 1072587361}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: MPText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1072587360
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1451,6 +1451,8 @@ MonoBehaviour:
   hpBarBack: {fileID: 0}
   mpBar: {fileID: 0}
   mpBarBack: {fileID: 0}
+  hpText: {fileID: 0}
+  mpText: {fileID: 0}
 --- !u!1 &2094118504
 GameObject:
   m_ObjectHideFlags: 0

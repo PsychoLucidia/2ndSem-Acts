@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class LifebarController : MonoBehaviour
 {
@@ -19,6 +20,9 @@ public class LifebarController : MonoBehaviour
     public Image mpBar;
     public Image mpBarBack;
 
+    public TextMeshProUGUI hpText;
+    public TextMeshProUGUI mpText;
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,10 +34,12 @@ public class LifebarController : MonoBehaviour
         Transform hpMain = charHPMP.transform.Find("HPBG");
         hpBar = hpMain.Find("HPBar").GetComponent<Image>();
         hpBarBack = hpMain.Find("HPBarBack").GetComponent<Image>();
+        hpText = hpMain.Find("HPText").GetComponent<TextMeshProUGUI>();
 
         Transform mpMain = charHPMP.transform.Find("MPBG");
         mpBar = mpMain.Find("MPBar").GetComponent<Image>();
         mpBarBack = mpMain.Find("MPBarBack").GetComponent<Image>();
+        mpText = mpMain.Find("MPText").GetComponent<TextMeshProUGUI>();
 
         
     }
@@ -42,6 +48,7 @@ public class LifebarController : MonoBehaviour
     void Update()
     {
         currentHP = Mathf.Clamp(currentHP, 0, maxHP);
+        currentMP = Mathf.Clamp(currentMP, 0, maxMP);
 
         LifeBarTest();
     }
@@ -50,6 +57,7 @@ public class LifebarController : MonoBehaviour
     {
         SetHP();
         SetMP();
+        SetText();
     }
 
     public void SetHP()
@@ -109,6 +117,12 @@ public class LifebarController : MonoBehaviour
 
             LeanTween.value(mpBar.gameObject, mpFFill, mpRatio, 0.7f).setIgnoreTimeScale(true).setOnUpdate(TweenMP);
         }
+    }
+
+    public void SetText()
+    {
+        hpText.text = currentHP.ToString() + " / " + maxHP.ToString();
+        mpText.text = currentMP.ToString() + " / " + maxMP.ToString();
     }
 
     void TweenHPBack(float value)
