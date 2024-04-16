@@ -6,25 +6,24 @@ using TMPro;
 
 public class LifebarController : MonoBehaviour
 {
-    public GameObject charHPMP;
-    public Transform charHPMPTrans;
-    public Vector2 charHPMPPos;
+    private GameObject charHPMP;
+    private Transform charHPMPTrans;
+    private Vector2 charHPMPPos;
+
+    private Image hpBar;
+    private Image hpBarBack;
+    private Image mpBar;
+    private Image mpBarBack;
+
+    private TextMeshProUGUI hpText;
+    private TextMeshProUGUI mpText;
 
     public float currentHP;
     public float maxHP;
     public float currentMP;
     public float maxMP;
 
-    public Image hpBar;
-    public Image hpBarBack;
-    public Image mpBar;
-    public Image mpBarBack;
-
-    public TextMeshProUGUI hpText;
-    public TextMeshProUGUI mpText;
-
-
-    // Start is called before the first frame update
+    // Start is called before the first frame update. Upon start, set all the neccessary components needed by the script.
     void Start()
     {
         charHPMP = this.gameObject;
@@ -47,6 +46,7 @@ public class LifebarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Clamp currentHP and currentMP between 0 and maxHP and maxMP.
         currentHP = Mathf.Clamp(currentHP, 0, maxHP);
         currentMP = Mathf.Clamp(currentMP, 0, maxMP);
 
@@ -189,5 +189,25 @@ public class LifebarController : MonoBehaviour
         {
             currentMP -= 10f;
         }
+    }
+
+    public void TakeDMG()
+    {
+        currentHP -= 10f;
+    }
+
+    public void TakeHeal()
+    {
+        currentHP += 10f;
+    }
+
+    public void ConsumeMP()
+    {
+        currentMP -= 10f;
+    }
+
+    public void RestoreMP()
+    {
+        currentMP += 10f;
     }
 }
