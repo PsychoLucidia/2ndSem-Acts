@@ -20,7 +20,9 @@ MonoBehaviour:
   DEF: 112
   expToGive: 0
   isEnemy: 1
-  animatorController: {fileID: 0}
+  animatorController: {fileID: 9100000, guid: c01ad06fb3d885749b9ec326cb13148f, type: 2}
   enemyPrefab: {fileID: 0}
   attackAnimLength: 0.35
-  basicAttackMessages: []
+  basicAttackMessages:
+  - Dark Wizard Attacks
+  - Dark Wizard Heals

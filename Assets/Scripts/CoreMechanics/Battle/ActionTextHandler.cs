@@ -21,9 +21,9 @@ public class ActionTextHandler : MonoBehaviour
         actionTextTween.PlayerAction(actionText);
     }
 
-    public void EnemyAction()
+    public void EnemyAction(string actionText)
     {
         actionTextTweenObj.SetActive(true);
-        actionTextTween.EnemyAction();
+        actionTextTween.EnemyAction(actionText);
     }
 }

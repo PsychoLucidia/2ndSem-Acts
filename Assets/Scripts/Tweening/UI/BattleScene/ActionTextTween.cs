@@ -58,7 +58,7 @@ public class ActionTextTween : MonoBehaviour
         });
     }
 
-    public void EnemyAction()
+    public void EnemyAction(string actionText)
     {
         LeanTween.cancel(thisObj);
         LeanTween.cancel(actionTextMainCG.gameObject);
@@ -70,6 +70,7 @@ public class ActionTextTween : MonoBehaviour
         actionLineTrans.localScale = new Vector3(0, 1, 1);
         actionTextBGCG.alpha = 0;
         actionTextBGColor.color = new Color32(160, 0, 0, 255);
+        actionTextTMP.text = actionText;
 
         LeanTween.moveLocalY(thisObjTransform.gameObject, 490, 0.3f).setEaseOutCubic().setIgnoreTimeScale(true);
         LeanTween.alphaCanvas(actionTextBGCG, 1, 0.2f).setEaseOutCubic().setDelay(0.2f).setIgnoreTimeScale(true);

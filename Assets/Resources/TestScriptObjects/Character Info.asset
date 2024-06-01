@@ -24,7 +24,7 @@ MonoBehaviour:
   isPlayer: 1
   characterArt: {fileID: 0}
   charIcon: {fileID: 0}
-  characterAnim: {fileID: 0}
+  animatorController: {fileID: 9100000, guid: 517e4b25853ef454eb00cd4f2bfeb450, type: 2}
   characterPrefab: {fileID: 0}
   attackAnimLength: 0.417
   basicAttackMessages:

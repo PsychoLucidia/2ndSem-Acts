@@ -45,6 +45,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f6bb405c1cafa548adc2eaa64262e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  charManager: {fileID: 0}
+  battleManager: {fileID: 0}
+  lifebar: {fileID: 0}
+  animator: {fileID: 0}
+  charName: 
+  HP: 0
+  MaxHP: 0
+  MP: 0
+  MaxMP: 0
+  LVL: 0
+  ATK: 0
+  DEF: 0
+  SPD: 0
+  attackAnimLength: 0
+  animController: {fileID: 0}
+  basicAttackMessages: []
+  isPlayer: 0
+  isEnemy: 0
 --- !u!1 &8591273917411677890
 GameObject:
   m_ObjectHideFlags: 0

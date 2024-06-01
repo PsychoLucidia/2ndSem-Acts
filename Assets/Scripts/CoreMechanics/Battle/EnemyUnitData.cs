@@ -43,6 +43,7 @@ public class EnemyUnitData : MonoBehaviour
         battleManager = initObj3.GetComponent<BattleManager>();
 
         isEnemy = enemyManager.enemyInfo[0].isEnemy;
+        battleManager.AttachEnemy(this);
 
         ComponentReference();
         LifebarSetData();
@@ -95,14 +96,26 @@ public class EnemyUnitData : MonoBehaviour
         battleManager.AttachAnimator(animator, isPlayer, isEnemy);
     }
 
-    void Start()
+    void Update()
     {
-        
+        SetDataToLifebar();
     }
 
     public bool ThisTakeDamage(int damage)
     {
         HP -= damage;
+        if (HP <= 0)
+        {
+            HP = 0;
+            return true;
+        }
+        return false;
+    }
+
+    public bool ThisHeal(float heal)
+    {
+        HP += Mathf.RoundToInt(heal);
+
         if (HP <= 0)
         {
             HP = 0;

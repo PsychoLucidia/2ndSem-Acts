@@ -43,6 +43,7 @@ public class UnitData : MonoBehaviour
         battleManager = initObj3.GetComponent<BattleManager>();
 
         isPlayer = charManager.charInfo[0].isPlayer;
+        battleManager.AttachUnit(this);
 
         ComponentReference();
         LifebarSetData();
@@ -69,11 +70,7 @@ public class UnitData : MonoBehaviour
 
     void SetDataToLifebar()
     {
-        if (isPlayer)
-        {
-            lifebar.isPlayer = isPlayer;
-        }
-
+        lifebar.isPlayer = isPlayer;
         lifebar.charName = charName;
         lifebar.currentHP = HP;
         lifebar.maxHP = MaxHP;
@@ -98,9 +95,9 @@ public class UnitData : MonoBehaviour
         battleManager.AttachAnimator(animator, isPlayer, isEnemy);
     }
 
-    void Start()
+    void Update()
     {
-        
+        SetDataToLifebar();
     }
 
     public bool ThisTakeDamage(int damage)
@@ -110,6 +107,19 @@ public class UnitData : MonoBehaviour
         {
             HP = 0;
             return true;
+        }
+        return false;
+    }
+
+    public bool ThisHeal(float heal)
+    {
+        HP += Mathf.RoundToInt(heal);
+        MP -= 15;
+        if (HP <= 0)
+        {
+            HP = 0;
+            return true;
+
         }
         return false;
     }
