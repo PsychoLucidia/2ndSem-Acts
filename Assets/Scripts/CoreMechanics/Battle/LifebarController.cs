@@ -6,41 +6,91 @@ using TMPro;
 
 public class LifebarController : MonoBehaviour
 {
-    private GameObject charHPMP;
-    private Transform charHPMPTrans;
-    private Vector2 charHPMPPos;
+    [Header("References")]
+    [SerializeField] private GameObject charHPMP;
+    [SerializeField] private Transform charHPMPTrans;
+    [SerializeField] private Vector2 charHPMPPos;
 
-    private Image hpBar;
-    private Image hpBarBack;
-    private Image mpBar;
-    private Image mpBarBack;
+    [Header("Images")]
+    [SerializeField] private Image hpBar;
+    [SerializeField] private Image hpBarBack;
+    [SerializeField] private Image mpBar;
+    [SerializeField] private Image mpBarBack;
 
-    private TextMeshProUGUI hpText;
-    private TextMeshProUGUI mpText;
+    [Header("Texts")]
+    [SerializeField] private TextMeshProUGUI hpText;
+    [SerializeField] private TextMeshProUGUI mpText;
+    [SerializeField] private TextMeshProUGUI lvlText;
 
+    [Header("Stats")]
+    public string charName;
     public float currentHP;
     public float maxHP;
     public float currentMP;
     public float maxMP;
+    public float currentLVL;
+
+    [Header("Character Type")]
+    public bool isPlayer;
+    public bool isEnemy;
+
+    void Awake()
+    {
+        
+    }
+
+    public void StartAsPlayer(CharManager charManager, int charIndex, bool isPlayer, bool isEnemy)
+    {
+        this.isPlayer = isPlayer;
+        this.isEnemy = isEnemy;
+        currentHP = charManager.charInfo[charIndex].HP;
+        maxHP = charManager.charInfo[charIndex].maxHP;
+        currentMP = charManager.charInfo[charIndex].MP;
+        maxMP = charManager.charInfo[charIndex].maxMP;
+    }
+
+    public void StartAsEnemy(EnemyManager enemyManager, int enemyIndex, bool isPlayer, bool isEnemy)
+    {
+        this.isPlayer = isPlayer;
+        this.isEnemy = isEnemy;
+        currentHP = enemyManager.enemyInfo[enemyIndex].HP;
+        maxHP = enemyManager.enemyInfo[enemyIndex].maxHP;
+        currentLVL = enemyManager.enemyInfo[enemyIndex].enemyLevel;
+        charName = enemyManager.enemyInfo[enemyIndex].enemyName;
+    }
 
     // Start is called before the first frame update. Upon start, set all the neccessary components needed by the script.
     void Start()
     {
-        charHPMP = this.gameObject;
-        charHPMPTrans = GetComponent<Transform>();
-        charHPMPPos = charHPMPTrans.localPosition;
+        if (isPlayer)
+        {
+            charHPMP = this.gameObject;
+            charHPMPTrans = charHPMP.GetComponent<Transform>();
+            charHPMPPos = charHPMPTrans.localPosition;
 
-        Transform hpMain = charHPMP.transform.Find("HPBG");
-        hpBar = hpMain.Find("HPBar").GetComponent<Image>();
-        hpBarBack = hpMain.Find("HPBarBack").GetComponent<Image>();
-        hpText = hpMain.Find("HPText").GetComponent<TextMeshProUGUI>();
+            Transform hpMain = charHPMP.transform.Find("HPBG");
+            hpBar = hpMain.Find("HPBar").GetComponent<Image>();
+            hpBarBack = hpMain.Find("HPBarBack").GetComponent<Image>();
+            hpText = hpMain.Find("HPText").GetComponent<TextMeshProUGUI>();
 
-        Transform mpMain = charHPMP.transform.Find("MPBG");
-        mpBar = mpMain.Find("MPBar").GetComponent<Image>();
-        mpBarBack = mpMain.Find("MPBarBack").GetComponent<Image>();
-        mpText = mpMain.Find("MPText").GetComponent<TextMeshProUGUI>();
+            Transform mpMain = charHPMP.transform.Find("MPBG");
+            mpBar = mpMain.Find("MPBar").GetComponent<Image>();
+            mpBarBack = mpMain.Find("MPBarBack").GetComponent<Image>();
+            mpText = mpMain.Find("MPText").GetComponent<TextMeshProUGUI>();            
+        }
 
-        
+        if (isEnemy)
+        {
+            charHPMP = this.gameObject;
+            charHPMPTrans = charHPMP.GetComponent<Transform>();
+            charHPMPPos = charHPMPTrans.localPosition;
+
+            Transform hpMain = charHPMP.transform.Find("HPBG");
+            hpBar = hpMain.Find("HPBar").GetComponent<Image>();
+            hpBarBack = hpMain.Find("HPBarBack").GetComponent<Image>();
+            lvlText = charHPMP.transform.Find("LVLText").GetComponent<TextMeshProUGUI>();
+        }
+
     }
 
     // Update is called once per frame
@@ -50,14 +100,26 @@ public class LifebarController : MonoBehaviour
         currentHP = Mathf.Clamp(currentHP, 0, maxHP);
         currentMP = Mathf.Clamp(currentMP, 0, maxMP);
 
-        LifeBarTest();
+        if (isEnemy)
+        {
+            lvlText.text = "Lv. " + currentLVL.ToString() + " | " + charName;
+        }
+
     }
 
     void FixedUpdate()
     {
-        SetHP();
-        SetMP();
-        SetText();
+        if (charHPMP != null)
+        {
+            SetHP();
+            
+            if (isPlayer)
+            {
+                SetMP();
+            }
+            
+            SetText();
+        }
     }
 
     public void SetHP()
@@ -68,7 +130,10 @@ public class LifebarController : MonoBehaviour
 
         if (hpRatio < hpFFill)
         {
-            StartCoroutine(DamageShake());
+            if (isPlayer)
+            {
+                StartCoroutine(DamageShake());
+            }
             LeanTween.cancel(hpBarBack.gameObject);
             LeanTween.cancel(hpBar.gameObject);
 
@@ -121,8 +186,11 @@ public class LifebarController : MonoBehaviour
 
     public void SetText()
     {
-        hpText.text = currentHP.ToString() + " / " + maxHP.ToString();
-        mpText.text = currentMP.ToString() + " / " + maxMP.ToString();
+        if (isPlayer)
+        {
+            hpText.text = currentHP.ToString() + " / " + maxHP.ToString();
+            mpText.text = currentMP.ToString() + " / " + maxMP.ToString();
+        }
     }
 
     void TweenHPBack(float value)
@@ -171,29 +239,9 @@ public class LifebarController : MonoBehaviour
         yield break;
     }
 
-    void LifeBarTest()
+    public void TakeDMG(int dmg)
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            currentHP -= 10f;
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            currentHP += 10f;
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            currentMP += 10f;
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            currentMP -= 10f;
-        }
-    }
-
-    public void TakeDMG()
-    {
-        currentHP -= 10f;
+        currentHP -= dmg;
     }
 
     public void TakeHeal()

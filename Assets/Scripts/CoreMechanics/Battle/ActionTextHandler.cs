@@ -15,10 +15,10 @@ public class ActionTextHandler : MonoBehaviour
         actionTextTween  = actionTextTweenObjTrans.GetComponent<ActionTextTween>();
     }
 
-    public void PlayerAction()
+    public void PlayerAction(string actionText)
     {
         actionTextTweenObj.SetActive(true);
-        actionTextTween.PlayerAction();
+        actionTextTween.PlayerAction(actionText);
     }
 
     public void EnemyAction()

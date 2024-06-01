@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: def79c2faacf3dc439955fa84d73631d, type: 3}
+  m_Name: Character Info
+  m_EditorClassIdentifier: 
+  charName: Wizard
+  LVL: 25
+  HP: 1800
+  maxHP: 1800
+  MP: 630
+  maxMP: 630
+  ATK: 350
+  DEF: 112
+  SPD: 146
+  isPlayer: 1
+  characterArt: {fileID: 0}
+  charIcon: {fileID: 0}
+  characterAnim: {fileID: 0}
+  characterPrefab: {fileID: 0}
+  attackAnimLength: 0.417
+  basicAttackMessages:
+  - Wizard Attacks
+  - Wizard Heals
